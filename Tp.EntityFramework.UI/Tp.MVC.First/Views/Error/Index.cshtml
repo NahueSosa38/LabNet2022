@@ -1,0 +1,19 @@
+﻿<html>
+<head>
+    <title>Error</title>
+</head>
+<body>
+    <hgroup>
+        <h1>Hubo un error</h1>
+        <h3>@ViewBag.Message</h3>
+        <h4>@ViewBag.Error</h4>
+    </hgroup>
+    <br />
+    <a href=@Url.Action("Index", "Categories" )>
+        <button type="button" class="btn btn-warning">Regresar</button>
+    </a>
+    <a href=@Url.Action("AgregarModificar", "Categories" )>
+        <button type="button" class="btn btn-warning">Intentar Nuevamente</button>
+    </a>
+</body>
+</html>

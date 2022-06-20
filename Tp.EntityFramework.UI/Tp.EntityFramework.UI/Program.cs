@@ -11,6 +11,7 @@ namespace Tp.EntityFramework.UI
     public class Program
     {
         CategoriesLogic categoriesLogic = new CategoriesLogic();
+
         static void Main(string[] args)
         {
             int option;
@@ -20,10 +21,8 @@ namespace Tp.EntityFramework.UI
                 Console.Clear();
                 Console.WriteLine("[1] - Mostrar Categorias");
                 Console.WriteLine("[2] - Mostrar Shippers");
-                Console.WriteLine("[3] - Añadir un dato");
-                Console.WriteLine("[4] - Actualizar un dato");
-                Console.WriteLine("[5] - Borrar un dato");
-                Console.WriteLine("[6] - Salir");
+                Console.WriteLine("[3] - Acciones");
+                Console.WriteLine("[4] - Salir");
 
                 bool fallo = int.TryParse(Console.ReadLine(), out option);
 
@@ -40,24 +39,15 @@ namespace Tp.EntityFramework.UI
                             break;
 
                         case 3:
-                            AñadirDato();
+                            Acciones();
                             break;
 
                         case 4:
-                            ActualizarDato();
-                            break;
-
-                        case 5:
-                            BorrarDato();
-                            break;
-
-                        case 6:
                             break;
                     }
                 }
-            } while (option != 6);
+            } while (option != 4);
         }
-
 
         // ---------------METODOS APLICADOS-------------------
 
@@ -101,17 +91,30 @@ namespace Tp.EntityFramework.UI
             } while (submenu !=1);
         }
 
-        static void AñadirDato()
+        static void Acciones()
         {
             int elegirModificacion;
             do
-            {
+            {   
+                Console.Clear();
+                Console.WriteLine("----ACCIONES CATEGORIAS----");
                 Console.WriteLine("");
                 Console.Write("[1] - Añadir Categoria");
                 Console.WriteLine("");
-                Console.Write("[2] - Añadir Shipper");
+                Console.Write("[2] - Modificar Categoria");
                 Console.WriteLine("");
-                Console.WriteLine("[3] - Regresar al menu principal");
+                Console.WriteLine("[3] - Borrar Categoria");
+                Console.WriteLine("");
+                Console.WriteLine("----ACCIONES SHIPPERS----");
+                Console.WriteLine("");
+                Console.Write("[4] - Añadir Shipper");
+                Console.WriteLine("");
+                Console.Write("[5] - Actualizar Shipper");
+                Console.WriteLine("");
+                Console.WriteLine("[6] - Borrar Shipper");
+                Console.WriteLine("");
+                Console.Write("[7] - Regresar al menu principal");
+                Console.WriteLine("");
 
                 bool fallo = int.TryParse(Console.ReadLine(), out elegirModificacion);
 
@@ -124,18 +127,30 @@ namespace Tp.EntityFramework.UI
                             break;
 
                         case 2:
-                            AñadirShipper();
+                            ModificarCategoria();
                             break;
 
-                        case 3:
+                        case 3:BorrarCategoria();
+                            break;
+
+                        case 4: AñadirShipper();
+                            break;
+
+                        case 5: ModificarShipper();
+                            break;
+
+                        case 6: BorrarShipper();
+                            break;
+
+                        case 7:
                             break;
 
                     }
                 }
 
-            } while (elegirModificacion != 3);
+            } while (elegirModificacion != 7);
 
-            if (elegirModificacion != 3)
+            if (elegirModificacion != 7)
             {
                 SubMenu();
             }
@@ -208,61 +223,26 @@ namespace Tp.EntityFramework.UI
             }
         }
 
-        static void ActualizarDato()
-        {
-            int elegirModificacion;
-            do
-            {
-                Console.WriteLine("");
-                Console.Write("[1] - Modificar Categoria");
-                Console.WriteLine("");
-                Console.Write("[2] - Modificar Shipper");
-                Console.WriteLine("");
-                Console.WriteLine("[3] - Regresar al menu principal");
-
-                bool fallo = int.TryParse(Console.ReadLine(), out elegirModificacion);
-
-                if (fallo)
-                {
-                    switch (elegirModificacion)
-                    {
-                        case 1:
-                            ModificarCategoria();
-                            elegirModificacion = 3;
-                            break;
-
-                        case 2:
-                            ModificarShipper();
-                            elegirModificacion = 3;
-                            break;
-
-                        case 3:
-                            break;
-
-                    }
-                }
-
-            } while (elegirModificacion != 3);
-
-            if (elegirModificacion!=3)
-            {
-                SubMenu(); 
-            }
-        }
-
         static void ModificarCategoria()
         {
-            Console.WriteLine("Ingrese la ID buscada");
-            int idCat = int.Parse(Console.ReadLine());
-            Console.WriteLine("Ingrese el nombre de la categoria nueva: ");
-            string nombreCat = Console.ReadLine();
-            Console.WriteLine("Ingrese la descripcion de la categoria nueva: ");
-            string descripCat = Console.ReadLine();
-
-            CategoriesLogic categoriesLogic = new CategoriesLogic();
             try
             {
+                Console.WriteLine("Ingrese la ID buscada");
+                int idCat = int.Parse(Console.ReadLine());
+                Console.WriteLine("Ingrese el nombre de la categoria nueva: ");
+                string nombreCat = Console.ReadLine();
+                Console.WriteLine("Ingrese la descripcion de la categoria nueva: ");
+                string descripCat = Console.ReadLine();
+
+                CategoriesLogic categoriesLogic = new CategoriesLogic();
+
                 categoriesLogic.Update(new Categories(idCat, nombreCat, descripCat));
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine($"Ingrese una id correcta -- [{ex.Message}]");
+                Console.WriteLine("Presione una tecla para continuar");
+                Console.ReadKey();
             }
             catch (InvalidOperationException ex)
             {
@@ -286,17 +266,22 @@ namespace Tp.EntityFramework.UI
 
         static void ModificarShipper()
         {
-            Console.WriteLine("Ingrese la ID buscada");
-            int idShip = int.Parse(Console.ReadLine());
-            Console.WriteLine("Ingrese el nombre de la compañia nueva: ");
-            string nombreComp = Console.ReadLine();
-            Console.WriteLine("Ingrese el telefono de contacto de la compañia: ");
-            string telComp = Console.ReadLine();
-
-            ShippersLogic shippersLogic = new ShippersLogic();
             try
-            {
+            { 
+                Console.WriteLine("Ingrese la ID buscada");
+                int idShip = int.Parse(Console.ReadLine());
+                Console.WriteLine("Ingrese el nombre de la compañia nueva: ");
+                string nombreComp = Console.ReadLine();
+                Console.WriteLine("Ingrese el telefono de contacto de la compañia: ");
+                string telComp = Console.ReadLine();
+                ShippersLogic shippersLogic = new ShippersLogic();
                 shippersLogic.Update(new Shippers(idShip, nombreComp, telComp));
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine($"Ingrese una id correcta -- [{ex.Message}]");
+                Console.WriteLine("Presione una tecla para continuar");
+                Console.ReadKey();
             }
             catch (InvalidOperationException ex)
             {
@@ -318,56 +303,21 @@ namespace Tp.EntityFramework.UI
             }
         }
 
-        static void BorrarDato()
-        {
-            int elegirModificacion;
-            do
-            {
-                Console.WriteLine("");
-                Console.Write("[1] - Borrar Categoria");
-                Console.WriteLine("");
-                Console.Write("[2] - Borrar Shipper");
-                Console.WriteLine("");
-                Console.WriteLine("[3] - Regresar al menu principal");
-
-                bool fallo = int.TryParse(Console.ReadLine(), out elegirModificacion);
-
-                if (fallo)
-                {
-                    switch (elegirModificacion)
-                    {
-                        case 1:
-                            BorrarCategoria();
-                            elegirModificacion = 3;
-                            break;
-
-                        case 2:
-                            BorrarShipper();
-                            elegirModificacion = 3;
-                            break;
-
-                        case 3:
-                            break;
-
-                    }
-                }
-
-            } while (elegirModificacion != 3);
-
-            if (elegirModificacion != 3)
-            {
-                SubMenu();
-            }
-        }
-
         static void BorrarCategoria()
         {
-            Console.WriteLine("Ingrese la ID que desea borrar");
-            int idCat = int.Parse(Console.ReadLine());
-            CategoriesLogic categoriesLogic = new CategoriesLogic();
             try
             {
+                Console.WriteLine("Ingrese la ID que desea borrar");
+                int idCat = int.Parse(Console.ReadLine());
+                CategoriesLogic categoriesLogic = new CategoriesLogic();
+
                 categoriesLogic.Delete(idCat);
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine($"Ingrese una id correcta -- [{ex.Message}]");
+                Console.WriteLine("Presione una tecla para continuar");
+                Console.ReadKey();
             }
             catch (InvalidOperationException ex)
             {
@@ -375,7 +325,7 @@ namespace Tp.EntityFramework.UI
                 Console.WriteLine("Presione una tecla para continuar");
                 Console.ReadKey();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 Console.WriteLine("Presione una tecla para continuar");
@@ -384,13 +334,19 @@ namespace Tp.EntityFramework.UI
         }
 
         static void BorrarShipper()
-        {            
-            Console.WriteLine("Ingrese la ID que desea borrar");
-            int idShip = int.Parse(Console.ReadLine());
-            ShippersLogic shippersLogic = new ShippersLogic();
+        {   
             try
-            {
+            { 
+                Console.WriteLine("Ingrese la ID que desea borrar");
+                int idShip = int.Parse(Console.ReadLine());
+                ShippersLogic shippersLogic = new ShippersLogic();
                 shippersLogic.Delete(idShip);
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine($"Ingrese una id correcta -- [{ex.Message}]");
+                Console.WriteLine("Presione una tecla para continuar");
+                Console.ReadKey();
             }
             catch (InvalidOperationException ex)
             {

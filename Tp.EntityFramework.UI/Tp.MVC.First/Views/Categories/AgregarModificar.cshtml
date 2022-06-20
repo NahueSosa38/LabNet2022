@@ -1,0 +1,43 @@
+﻿@model Tp.MVC.First.Models.CategoriesView
+@{
+    ViewBag.Title = "Pagina Agregar/Modificar";
+}
+
+<h1>Agregue o Modifique una categoria</h1>
+<h4>Para modificar una categoria, coloque la ID de la misma</h4>
+
+@using (Html.BeginForm("AgregarModificar", "Categories", FormMethod.Post))
+{
+    <br>
+    <label>ID</label> @Html.TextBoxFor(x => x.Id, new { id = "id", onkeyup = "fieldsCheck()" })
+    <br />
+    <label>Categoria</label> @Html.TextBoxFor(x => x.Name, new { id = "nombre", onkeyup = "fieldsCheck()"})
+    <br>
+    <label>Descripcion</label> @Html.TextBoxFor(x => x.Descripcion, new { id = "descrip", onkeyup = "fieldsCheck()" })
+    <br />
+
+    <br>
+    <button type="submit" id="boton" class="btn btn-success" disabled>Guardar</button>
+    <br />
+
+    <script>
+
+        let Id = document.getElementById("id");
+        let Name = document.getElementById("nombre");
+        let Descripcion = document.getElementById("descrip");
+        let boton = document.getElementById("boton");
+
+        function fieldsCheck()
+        {
+
+            if (Name.value != "" && Descripcion.value != "") {
+
+                boton.disabled = false;
+            } else {
+
+                boton.disabled = true;
+            }
+
+        }        
+    </script>
+}

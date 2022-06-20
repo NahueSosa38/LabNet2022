@@ -58,13 +58,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Tp.EntityFramework.Data\Tp.EntityFramework.Data.csproj">
+    <ProjectReference Include="..\Tp.EntityFramework.Data\Tp.MVC.Data.csproj">
       <Project>{68459D6D-BBE2-4F3A-B64B-24A7BE9145CB}</Project>
-      <Name>Tp.EntityFramework.Data</Name>
+      <Name>Tp.MVC.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Tp.EntityFramework.Entities\Tp.EntityFramework.Entities.csproj">
+    <ProjectReference Include="..\Tp.EntityFramework.Entities\Tp.MVC.Entities.csproj">
       <Project>{A298AEE2-D165-44B4-BF1A-3806D08469B4}</Project>
-      <Name>Tp.EntityFramework.Entities</Name>
+      <Name>Tp.MVC.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
