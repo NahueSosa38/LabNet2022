@@ -129,10 +129,12 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\DigimonController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CategoriesView.cs" />
+    <Compile Include="Models\DigimonView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +176,7 @@
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Categories\AgregarModificar.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Digimon\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -192,6 +195,10 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Tp.API.Logic\Tp.API.Logic.csproj">
+      <Project>{698EC913-67AA-42B9-890F-0D6CF7BADC79}</Project>
+      <Name>Tp.API.Logic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tp.EntityFramework.Entities\Tp.MVC.Entities.csproj">
       <Project>{A298AEE2-D165-44B4-BF1A-3806D08469B4}</Project>
       <Name>Tp.MVC.Entities</Name>

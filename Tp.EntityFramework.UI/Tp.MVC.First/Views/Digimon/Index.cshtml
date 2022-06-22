@@ -1,0 +1,28 @@
+﻿@model List<Tp.MVC.First.Models.DigimonView>
+
+@{
+    ViewBag.Title = "Digimon's Page";
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Nivel</th>
+            <th scope="col">Imagen</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th scope="row">@item.Name</th>
+            <td>@item.Lvl</td>
+            <td>
+                <a href=@item.Pic target="_blank">
+                    <button type="button" class="btn btn-warning">Ir a Imagen</button>
+                </a>
+            </td>
+        </tr>
+    }
+</table>

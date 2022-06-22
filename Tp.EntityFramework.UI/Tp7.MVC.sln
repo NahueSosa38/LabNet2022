@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tp.MVC.Entities", "Tp.Entit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tp.MVC.First", "Tp.MVC.First\Tp.MVC.First.csproj", "{89C6243C-47F5-41EC-A41A-308C7B2E894A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tp.MVC.WebApi", "Tp.MVC.WebApi\Tp.MVC.WebApi.csproj", "{45CB69F5-F97C-4258-95D9-DAD344FD4C88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tp.API.Logic", "Tp.API.Logic\Tp.API.Logic.csproj", "{698EC913-67AA-42B9-890F-0D6CF7BADC79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{89C6243C-47F5-41EC-A41A-308C7B2E894A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89C6243C-47F5-41EC-A41A-308C7B2E894A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89C6243C-47F5-41EC-A41A-308C7B2E894A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45CB69F5-F97C-4258-95D9-DAD344FD4C88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45CB69F5-F97C-4258-95D9-DAD344FD4C88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45CB69F5-F97C-4258-95D9-DAD344FD4C88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45CB69F5-F97C-4258-95D9-DAD344FD4C88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{698EC913-67AA-42B9-890F-0D6CF7BADC79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{698EC913-67AA-42B9-890F-0D6CF7BADC79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{698EC913-67AA-42B9-890F-0D6CF7BADC79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{698EC913-67AA-42B9-890F-0D6CF7BADC79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
