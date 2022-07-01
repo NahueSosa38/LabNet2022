@@ -1,0 +1,24 @@
+.col-1{
+    align-items: flex-end;
+    padding: 20px;
+}
+
+#cancel{
+
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#divInfo{
+    color: black;
+    background-color: wheat;
+    align-items: flex-end;
+    width: auto;
+    margin: auto;
+}
+
+body{
+    
+    color: black;
+    background-color:rgb(196, 196, 196)
+}

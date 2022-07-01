@@ -1,0 +1,65 @@
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+
+        <form [formGroup]="form" class="pb-3">
+
+          <div class="form-group">
+            <label for="exampleInputPassword1">Nombre</label>
+            <input type="text" class="form-control" formControlName="Name" placeholder="Nombre">
+            <label for="exampleInputPassword1">Descripcion</label>
+            <input type="text" class="form-control" formControlName="Descripcion" placeholder="Descripcion">
+          </div>
+        </form>
+      </div>       
+      <div class="col-1">          
+        <button class="btn btn-success" (click)="guardar()" [disabled]="this.form.invalid">Agregar</button>
+        <div id="cancel">
+          <button class="btn btn-secondary" (click)="borrarForm()">Cancelar</button>
+        </div>
+        <div>
+          <button type="button" class="btn btn-warning" (click)="info=!info">Info</button>
+        </div> 
+    </div>
+    <div *ngIf="info" id="divInfo">
+      <h5>Agregar</h5>
+      <p>Luego de ingresar el Nombre y/o Descripcion de la Categoria, seleccione el boton "Agregar" 
+        para sumarla a la lista  </p>
+        <h5>Editar</h5>
+      <p>Luego de ingresar el Nombre y/o Descripcion,presione "Editar" en la columna Accion
+        de la Categoria que desea modificar </p>
+        <h5>Eliminar</h5>
+      <p>Presione el boton "Eliminar" en la columna Acion de la Categoria que desea eliminar</p>
+    </div> 
+      <h2>Lista de Categorias</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Accion</th>           
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listCategories">
+            <th scope="row">{{ item.Id }}</th>
+            <td>{{ item.Name }}</td>
+            <td>{{ item.Descripcion }}</td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  (click)="editarCat(item.Id)" [disabled]="this.form.invalid">Editar</button>
+              </td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  (click)="borrarCat(item.Id)">Eliminar</button>
+              </td>           
+          </tr>         
+        </tbody>
+      </table>
+</div>
